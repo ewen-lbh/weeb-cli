@@ -1,10 +1,12 @@
+NOTE: I'm following RDD (Readme-driven developpement), a whole lot of things don't work at all.
+
 Convenience for weebs using the command line.
 
 Usage:
 	weeb SERVICE watch SHOW [EPISODE]
 	weeb SERVICE watchlist [STATE] [--open]
-	weeb SERVICE read [TITLE]
-	weeb SERVICE news [SEARCH-TERM...]
+	weeb SERVICE read TITLE [CHAPTER]
+	weeb SERVICE news [--lang LANGUAGE] [SEARCH-TERM...]
 	weeb SERVICE (--version | --about | --help)
 
 Configuring:
@@ -20,7 +22,7 @@ Options:
 	   --version          Print weeb-cli's version
 	   --about            Print some useless info about the guy who made this stupid CLI
 	   --help             Print this help
-	
+	   --lang LANGUAGE    Choose a language for the news [default: us]
 Commands:
 	watch  
 		Watch the next episode of SHOW, or watch episode EPISODE if specified, and update your watchlist. 
@@ -28,7 +30,8 @@ Commands:
 		Your watchlist is updated as follows:
 			- Mark the show as "Watching"
 			- Set the specified episode to "Watched"
-		Of course, how these concepts are actually implemented vary depending on which service you use, 
+
+		Of course, how these concepts are actually implemented varies depending on which service you use, 
 		in most cases, you can't mark a specific episode as "watched" without marking all of the previous ones as well.
 		
 		EPISODE can use the following formats:

@@ -1,0 +1,50 @@
+Structure for watch/read
+========================
+
+
+| trackers/anilist.go |   | trackers/kitsu.go |    | trackers/myanimelist.go |
+          ↓                         ↓                           ↓
+          -------------Translate to standardized obj-------------
+                                    ↓
+                              | structs.go | <~~ contains two structs, `manga` and `anime`, to use regardless of the tracking service used
+                                    ↓
+                         | relationsresolver.go | <~~ resolve relations from databases to get the correct season's show title
+                                    ↓
+                         | videoproviders/*.go | <~~ build URLs from episodes
+                                    |
+                                    |
+| cli.py <---------------------------  <~~ open built URL in the browser                                    
+
+
+Structure for news
+==================
+
+                            | newsfeeds/*.go |
+                                    ↓
+                              | structs.go | <~~ contains a struct `newsarticle` to use regardless of the newsfeed website used
+                                    ↓
+                                | ui.go | <~~ render the news article(s) + global info in the terminal
+                                    |
+                                    |
+| cli.py <---------------------------  <~~ print to stdout
+
+
+Structure for watchlist
+=======================
+
+| trackers/anilist.go |   | trackers/kitsu.go |    | trackers/myanimelist.go |
+          ↓                         ↓                           ↓
+          -------------Translate to standardized obj-------------
+                                    ↓
+                              | structs.go | <~~ contains two structs, `manga` and `anime`, to use regardless of the tracking service used
+                --------------------↓
+                |        | relationsresolver.go | <~~ resolve relations from databases to get the correct season's show title
+        foreach |                   ↓
+           item |         | videoproviders/*.go | <~~ build URLs from episodes
+                |                   ↓
+                |               | ui.go | <~~ build watchlist item string to show to stdout
+                --------------------↓
+                                | ui.go | <~~ concat items and add global info                    
+                                    |
+                                    |
+| cli.py <---------------------------  <~~ open built URL in the browser    
